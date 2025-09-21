@@ -1,37 +1,34 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import ProductCard from "./ProductCard";
+import sample1 from "../data/api_responses/sample_response_1.json";
+import sample2 from "../data/api_responses/sample_response_2.json";
+import sample3 from "../data/api_responses/sample_response_3.json";
+
+const responses = [sample1, sample2, sample3];
 
 function ProductContainer() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [step, setStep] = useState(0);
 
-  const fetchProducts = async () => {
-    try {
-      setLoading(true);
+  const fetchProducts = () => {
+    setLoading(true);
+    const data = responses[step]; // pick current JSON
+    const productArray = Object.keys(data)
+      .map((id) => ({
+        productId: id,
+        quantity: data[id],
+        imageSrc: `/images/${id}.png`, // served from public/images
+      }))
+      .filter((p) => p.quantity > 0);
 
-      const response = await axios.get("http://localhost:4000"); // replace with actual API
-      const data = response.data;
-
-      // Filter out products with quantity 0 first, then map
-      const productArray = Object.keys(data)
-        .filter((id) => data[id] > 0)  // ✅ Only include quantity > 0
-        .map((id) => ({
-          productId: id,
-          quantity: data[id],
-          imageSrc: `/images/${id}.png`, // ensure images exist
-        }));
-
-      setProducts(productArray);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      setLoading(false);
-    }
+    setProducts(productArray);
+    setLoading(false);
+    setStep((prev) => (prev + 1) % responses.length); // cycle through JSONs
   };
 
   useEffect(() => {
-    fetchProducts(); // initial fetch
+    fetchProducts(); // initial load
     const interval = setInterval(fetchProducts, 60000); // update every 60s
     return () => clearInterval(interval);
   }, []);
@@ -40,8 +37,6 @@ function ProductContainer() {
     <div className="w-full h-screen overflow-auto p-4 bg-gray-50">
       {loading ? (
         <div className="text-center text-gray-500">Loading products...</div>
-      ) : products.length === 0 ? (
-        <div className="text-center text-gray-500">No products available</div>
       ) : (
         <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4">
           {products.map((p) => (
