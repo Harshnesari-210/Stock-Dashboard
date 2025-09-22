@@ -54,7 +54,6 @@ function ProductContainer() {
         {/* Header */}
         <div className="flex items-end justify-between mb-6">
           <h2 className="text-2xl font-semibold text-white/90 tracking-wide">Overview</h2>
-          <span className="text-xs text-white/40">auto-refreshes every 60s</span>
         </div>
 
         {/* Totals */}
