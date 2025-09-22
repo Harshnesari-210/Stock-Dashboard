@@ -1,9 +1,11 @@
-import React from "react"; // 
+import React from "react";
+import TotalsRow from "./components/TotalsRow";
 import ProductContainer from "./components/ProductContainer";
 
 function App() {
   return (
-    <div className="App  bg-white min-h-screen">
+    <div className="bg-black min-h-screen text-white p-6">
+      
       <ProductContainer />
     </div>
   );
