@@ -1,3 +1,4 @@
+// ProductContainer.jsx
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import values from "../data/api_responses/value.json";
@@ -29,18 +30,16 @@ function ProductContainer() {
 
     setProducts(productArray);
 
-    // Calculate totals
+    // Totals
     const coinsQty = data[995] || 0;
     const platinumQty = data[13204] || 0;
     let total = 0;
-
     Object.keys(data).forEach((id) => {
       const price = values[id] || 0;
       total += price * data[id];
     });
 
     setTotals({ coins: coinsQty, platinum: platinumQty, totalWealth: total });
-
     setStep((prev) => (prev + 1) % responses.length);
     setLoading(false);
   };
@@ -54,41 +53,40 @@ function ProductContainer() {
   return (
     <div className="bg-black p-6 rounded-lg shadow-lg text-white">
       {/* Totals Row */}
-      <div className="flex justify-between mb-6 flex-wrap gap-4 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         {/* Coins */}
-        <div className="flex items-center justify-between bg-gray-900 rounded-lg p-3 shadow flex-1 min-w-[120px]">
-          <div className="flex flex-col justify-between h-16">
+        <div className="flex items-center justify-between bg-gray-900 rounded-xl p-4 shadow hover:bg-gray-800 transition">
+          <div className="flex flex-col justify-between">
             <span className="text-sm text-gray-400">Coins</span>
-            <span className="text-white font-bold truncate">{totals.coins}</span>
+            <span className="text-yellow-400 font-bold text-lg">{totals.coins}</span>
           </div>
-          <img src={ValueImg} alt="Total Wealth" className="w-40 h-16 object-contain" />
-
+          <img src={CoinsImg} alt="Coins" className="w-12 h-12 object-contain" />
         </div>
 
         {/* Platinum */}
-        <div className="flex items-center justify-between bg-gray-900 rounded-lg p-3 shadow flex-1 min-w-[120px]">
-          <div className="flex flex-col justify-between h-16">
+        <div className="flex items-center justify-between bg-gray-900 rounded-xl p-4 shadow hover:bg-gray-800 transition">
+          <div className="flex flex-col justify-between">
             <span className="text-sm text-gray-400">Platinum</span>
-            <span className="text-white font-bold truncate">{totals.platinum}</span>
+            <span className="text-yellow-400 font-bold text-lg">{totals.platinum}</span>
           </div>
-          <img src={PlatinumImg} alt="Platinum" className="w-40 h-16 object-contain" />
+          <img src={PlatinumImg} alt="Platinum" className="w-12 h-12 object-contain" />
         </div>
 
         {/* Total Wealth */}
-        <div className="flex items-center justify-between bg-gray-900 rounded-lg p-3 shadow flex-1 min-w-[140px]">
-          <div className="flex flex-col justify-between h-16">
+        <div className="flex items-center justify-between bg-gray-900 rounded-xl p-4 shadow hover:bg-gray-800 transition">
+          <div className="flex flex-col justify-between">
             <span className="text-sm text-gray-400">Total Wealth</span>
-            <span className="text-white font-bold truncate">{totals.totalWealth}</span>
+            <span className="text-yellow-400 font-bold text-lg">{totals.totalWealth}</span>
           </div>
-          <img src={CoinsImg} alt="Coins" className="w-40 h-16 object-contain" />
+          <img src={ValueImg} alt="Total Wealth" className="w-12 h-12 object-contain" />
         </div>
       </div>
 
-      {/* Products grid */}
+      {/* Products Grid */}
       {loading ? (
         <div className="text-center text-gray-400">Loading products...</div>
       ) : (
-        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 mt-10">
+        <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-16 gap-3">
           {products.map((p) => (
             <ProductCard
               key={p.productId}
