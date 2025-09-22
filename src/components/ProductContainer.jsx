@@ -59,7 +59,7 @@ function ProductContainer() {
         <div className="flex items-center justify-between bg-gray-900 rounded-lg p-3 shadow flex-1 min-w-[120px]">
           <div className="flex flex-col justify-between h-16">
             <span className="text-sm text-gray-400">Coins</span>
-            <span className="text-yellow-400 font-bold truncate">{totals.coins}</span>
+            <span className="text-white font-bold truncate">{totals.coins}</span>
           </div>
           <img src={CoinsImg} alt="Coins" className="w-40 h-16 object-contain" />
         </div>
