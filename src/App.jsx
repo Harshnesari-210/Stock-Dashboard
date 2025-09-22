@@ -4,7 +4,7 @@ import ProductContainer from "./components/ProductContainer";
 
 function App() {
   return (
-    <div className="bg-black min-h-screen text-white p-6">
+    <div className="bg-[#171A24] min-h-screen text-white p-6">
       
       <ProductContainer />
     </div>
