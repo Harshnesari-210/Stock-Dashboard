@@ -68,7 +68,7 @@ function ProductContainer() {
         <div className="flex items-center justify-between bg-gray-900 rounded-lg p-3 shadow flex-1 min-w-[120px]">
           <div className="flex flex-col justify-between h-16">
             <span className="text-sm text-gray-400">Platinum</span>
-            <span className="text-yellow-400 font-bold truncate">{totals.platinum}</span>
+            <span className="text-white font-bold truncate">{totals.platinum}</span>
           </div>
           <img src={PlatinumImg} alt="Platinum" className="w-40 h-16 object-contain" />
         </div>
@@ -77,7 +77,7 @@ function ProductContainer() {
         <div className="flex items-center justify-between bg-gray-900 rounded-lg p-3 shadow flex-1 min-w-[140px]">
           <div className="flex flex-col justify-between h-16">
             <span className="text-sm text-gray-400">Total Wealth</span>
-            <span className="text-yellow-400 font-bold truncate">{totals.totalWealth}</span>
+            <span className="text-white font-bold truncate">{totals.totalWealth}</span>
           </div>
           <img src={ValueImg} alt="Total Wealth" className="w-40 h-16 object-contain" />
         </div>
