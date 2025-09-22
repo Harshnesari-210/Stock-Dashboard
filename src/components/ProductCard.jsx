@@ -10,7 +10,7 @@ function ProductCard({ imageSrc, quantity }) {
       <img
         src={imageSrc}
         alt="product"
-        className="w-24 h-24 object-contain"
+        className="w-16 h-16 object-contain"
       />
     </div>
   );
