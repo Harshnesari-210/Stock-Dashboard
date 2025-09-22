@@ -34,22 +34,23 @@
     }, []);
 
     return (
-      <div className="w-full h-screen overflow-auto p-4 bg-gray-50 m-5">
-        {loading ? (
-          <div className="text-center text-gray-500">Loading products...</div>
-        ) : (
-          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4">
-            {products.map((p) => (
-              <ProductCard
-                key={p.productId}
-                imageSrc={p.imageSrc}
-                quantity={p.quantity}
-              />
-            ))}
-          </div>
-        )}
+  <div className="w-full h-screen overflow-auto p-12 bg-black ">
+    {loading ? (
+      <div className="text-center text-gray-400">Loading products...</div>
+    ) : (
+      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4">
+        {products.map((p) => (
+          <ProductCard
+            key={p.productId}
+            imageSrc={p.imageSrc}
+            quantity={p.quantity}
+          />
+        ))}
       </div>
-    );
+    )}
+  </div>
+);
+
   }
 
   export default ProductContainer;

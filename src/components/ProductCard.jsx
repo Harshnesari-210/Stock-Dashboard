@@ -2,9 +2,9 @@ import React from "react";
 
 function ProductCard({ imageSrc, quantity }) {
   return (
-    <div className="bg-gray-100 rounded-md overflow-hidden shadow-md flex flex-col items-center p-2">
-      {/* Quantity above image, centered */}
-      <div className="mb-2 text-center font-bold text-gray-700 text-lg">
+    <div className="bg-gray-900 rounded-md overflow-hidden shadow-lg flex flex-col items-center p-4">
+      {/* Quantity above image */}
+      <div className="mb-2 px-3 py-1 rounded-full bg-black text-yellow-400 font-bold text-sm shadow">
         {quantity}
       </div>
       <img
